@@ -13,7 +13,7 @@ install:
   - npm install
 
 script:
-  - npm deploy
+  - npm run deploy
 
 after_script:
   - git clone ${GH_REF} hexo-public

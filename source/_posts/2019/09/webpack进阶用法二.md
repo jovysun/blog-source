@@ -11,7 +11,7 @@ updated: 2019-09-17 10:19:55
 
 # 概述
 
-本文介绍的 webpack 用法有：Scope Hosting 的使用和原理分析、代码分割和动态 import、在 webpack 中使用 ESLint、webpack 打包组件和基础库和优化构建时命令行的显示日志。
+1本文介绍的 webpack 用法有：Scope Hosting 的使用和原理分析、代码分割和动态 import、在 webpack 中使用 ESLint、webpack 打包组件和基础库和优化构建时命令行的显示日志。
 
 <!-- more -->
 
