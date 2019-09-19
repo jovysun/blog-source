@@ -13,12 +13,21 @@ install:
   - npm install
 
 script:
-  - npm run deploy
+  - npm deploy
 
 after_script:
+  - git clone ${GH_REF} hexo-public
+  - cp -rf public/* hexo-public/
+  - cd hexo-public
   - git config user.name "jovysun"
   - git config user.email "jovysun@163.com"
+  - git add .
+  - git commit -am "Travis CI Auto Builder..."
+  - git push origin master 
 
 branches:
   only:
     - master
+env:
+ global:
+   - GH_REF: https://jovysun:${github_token}@github.com/jovysun/jovysun.github.io.git
