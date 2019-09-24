@@ -249,4 +249,10 @@ npm run build
 
 # 参考
 
+https://webpack.docschina.org/contribute/writing-a-plugin/
+
+https://webpack.docschina.org/api/compiler-hooks/#emit
+
+https://webpack.docschina.org/api/plugins/#%E6%8F%92%E4%BB%B6%E7%B1%BB%E5%9E%8B-plugin-types-
+
 《极客时间》
