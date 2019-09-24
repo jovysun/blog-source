@@ -21,18 +21,16 @@ updated: 2019-09-16 09:18:30
 
 若频次很低，我们可以直接手动删除已构建文件。但是实际中我们要经常执行构建命令，这时候就需要自动清理构建目录文件了。思路一是用`npm scripts`，直接用系统命令：`rm -rf ./dist && webpack`，或者用 npm 包 rimraf：`rimraf ./dist && webpack`。思路二是用 webpack 插件`clean-webpack-plugin`，使用很简单，安装配置下即可，完成后每次构建就会自动清理已构建的目录文件。
 
-<!-- package.json -->
-
-```json
+```js
+// package.json
   "scripts": {
     "build": "rm -rf ./dist && webpack --config webpack.prod.js",
     // "build": "rimraf ./dist && webpack --config webpack.prod.js",
   }
 ```
 
-<!-- webpack.prod.js -->
-
 ```js
+// webpack.config.js
 plugins: [new CleanWebpackPlugin()];
 ```
 
@@ -69,7 +67,7 @@ plugins: [new CleanWebpackPlugin()];
   },
 ```
 
-```json
+```js
 // package.json
   "browserslist": [
     "last 2 version",

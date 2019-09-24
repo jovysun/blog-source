@@ -36,9 +36,8 @@ updated: 2019-09-17 10:19:55
 
 要求必须是 ES6 语法（原因同上一篇 tree shaking），CommonJS 不支持。若是 webpack4.x 设置 mode 为 production 后默认开启，之前版本及其他模式需要显式引用`ModuleConcatenationPlugin`插件，示例如下：
 
-<!-- webpack.config.js -->
-
 ```js
+// webpack.config.js
 const webpack = require('webpack')
 module.exports = {
   ...
