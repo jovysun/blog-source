@@ -68,7 +68,7 @@ plugins: [new CleanWebpackPlugin()];
       ]
   },
 ```
-package.json
+
 ```json
 // package.json
   "browserslist": [
