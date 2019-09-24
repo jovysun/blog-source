@@ -11,7 +11,7 @@ updated: 2019-09-16 09:18:30
 
 # 概述
 
-本文介绍的 webpack 用法有：自动清理构建目录、自动补齐 CSS3 前缀、移动端 CSS 中的 px 自动转成 rem、静态资源内联、多页面应用打包通用方案、使用 source map、提取页面公共资源和tree shaking 的使用和原理分析。
+本文介绍的 webpack 用法有：自动清理构建目录、自动补齐 CSS3 前缀、移动端 CSS 中的 px 自动转成 rem、静态资源内联、多页面应用打包通用方案、使用 source map、提取页面公共资源和 tree shaking 的使用和原理分析。
 
 <!-- more -->
 
@@ -51,9 +51,8 @@ plugins: [new CleanWebpackPlugin()];
 
 实际生产中我们当然不想这么低效率，因此可以使用构建工具来自动完成这些。在 webpack 中可以使用 PostCSS 插件 autoprefixer 来实现。至于哪些属性需要加前缀，主要是根据配置的 browserslist 和[Can I Use](https://caniuse.com/)规则确定。具体使用，首先安装 npm 包`postcss-loader`和`autoprefixer`，然后配置具体参数，最后示例如下：
 
-<!-- webpack.prod.js -->
-
 ```js
+// webpack.config.js
   {
       test: /.css$/,
       use: [
@@ -70,9 +69,8 @@ plugins: [new CleanWebpackPlugin()];
   },
 ```
 
-<!-- package.json -->
-
 ```json
+// package.json
   "browserslist": [
     "last 2 version",
     "> 1%",
@@ -169,14 +167,14 @@ module: {
       test: /\.scss$/,
       use: [
         {
-          loader: "style-loader",
+          loader: 'style-loader',
           options: {
-            insertAt: "top", // 样式插入到<head>
+            insertAt: 'top', // 样式插入到<head>
             singleton: true //将所有的style标签合并成一个
           }
         },
-        "css-loader",
-        "sass-loader"
+        'css-loader',
+        'sass-loader'
       ]
     }
   ];
@@ -194,7 +192,7 @@ module: {
       test: /.(png|jpg|gif|jpeg)$/,
       use: [
         {
-          loader: "url-loader",
+          loader: 'url-loader',
           options: {
             limit: 10240
           }
@@ -205,7 +203,7 @@ module: {
       test: /.(woff|woff2|eot|ttf|otf)$/,
       use: [
         {
-          loader: "url-loader",
+          loader: 'url-loader',
           options: {
             limit: 10240
           }
@@ -221,21 +219,20 @@ module: {
 思路一，每个页面对应一个 entry，一个 html-webpack-plugin，缺点就是增删页面需要修改 webpack 配置文件。
 思路二，动态获取 entry 和设置 html-webpack-plugin 数量，前提是约定各个页面文件结构，例如每个页面一个单独文件夹，每个入口文件名都为 index.js。示例如下：
 
-<!-- webpack.config.js -->
-
 ```js
-"use strict";
+// webpack.config.js
+'use strict';
 
-const glob = require("glob");
-const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const glob = require('glob');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const setMPA = () => {
   const entry = {};
   const htmlWebpackPlugins = [];
 
-  const entryFiles = glob.sync(path.join(__dirname, "./src/*/index.js"));
+  const entryFiles = glob.sync(path.join(__dirname, './src/*/index.js'));
 
   Object.keys(entryFiles).map(index => {
     const entryFile = entryFiles[index];
@@ -247,7 +244,7 @@ const setMPA = () => {
       new HtmlWebpackPlugin({
         template: path.join(__dirname, `src/${fileName}/index.html`),
         filename: `${fileName}.html`,
-        chunks: ["vendors", fileName],
+        chunks: ['vendors', fileName],
         inject: true,
         minify: {
           html5: true,
@@ -272,8 +269,8 @@ const { entry, htmlWebpackPlugins } = setMPA();
 module.exports = {
   entry: entry,
   output: {
-    path: path.join(__dirname, "dist"),
-    filename: "[name]_[chunkhash:8].js"
+    path: path.join(__dirname, 'dist'),
+    filename: '[name]_[chunkhash:8].js'
   },
 
   plugins: [new CleanWebpackPlugin()].concat(htmlWebpackPlugins)
@@ -298,24 +295,23 @@ module.exports = {
 
 将 react、react-dom 基础包通过 cdn 引入，不打入 bundle 中，可以使用`html-webpackexternals-plugin`实现：
 
-<!-- webpack.config.js -->
-
 ```js
-const HtmlWebpackExternalsPlugin = require("html-webpack-externals-plugin");
+// webpack.config.js
+const HtmlWebpackExternalsPlugin = require('html-webpack-externals-plugin');
 module.exports = {
   plugins: [
     new HtmlWebpackExternalsPlugin({
       externals: [
         {
-          module: "react",
-          entry: "https://unpkg.com/react@16/umd/react.production.min.js",
-          global: "React"
+          module: 'react',
+          entry: 'https://unpkg.com/react@16/umd/react.production.min.js',
+          global: 'React'
         },
         {
-          module: "react-dom",
+          module: 'react-dom',
           entry:
-            "https://unpkg.com/react-dom@16/umd/react-dom.production.min.js",
-          global: "ReactDOM"
+            'https://unpkg.com/react-dom@16/umd/react-dom.production.min.js',
+          global: 'ReactDOM'
         }
       ]
     })
@@ -349,8 +345,8 @@ module.exports = {
       cacheGroups: {
         commons: {
           test: /(react|react-dom)/, //匹配出需要分离的包
-          name: "vendors",
-          chunks: "all"
+          name: 'vendors',
+          chunks: 'all'
         }
       }
     }
@@ -367,8 +363,8 @@ module.exports = {
       minSize: 0, //分离的包体积的大小
       cacheGroups: {
         commons: {
-          name: "commons",
-          chunks: "all",
+          name: 'commons',
+          chunks: 'all',
           minChunks: 2 //设置最小引用次数为2次
         }
       }
@@ -417,9 +413,9 @@ console.log('这段代码永远不会执行’);
 ```js
 // webpack编译时会报错
 if (condition) {
-  import module1 from "./module1";
+  import module1 from './module1';
 } else {
-  import module2 from "./module2";
+  import module2 from './module2';
 }
 ```
 
