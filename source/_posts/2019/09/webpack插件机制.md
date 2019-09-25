@@ -195,5 +195,3 @@ module.exports = HelloAsyncPlugin;
 ```
 
 [更多介绍](https://webpack.docschina.org/contribute/writing-a-plugin/#%E5%BC%82%E6%AD%A5%E4%BA%8B%E4%BB%B6%E9%92%A9%E5%AD%90)
-
-# 参考
