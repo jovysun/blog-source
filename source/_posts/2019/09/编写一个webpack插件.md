@@ -11,7 +11,7 @@ updated: 2019-09-24 19:06:56
 
 # 概述
 
-插件向第三方开发者提供了 webpack 引擎中完整的能力。本文将分两部分，第一部分介绍下插件编写的基本要求及基础 demo，第二部分将以一个实际的插件开发过程为线进一步讲解相关常用 API。
+插件向第三方开发者提供了 webpack 引擎中完整的能力。本文将分两部分，第一部分介绍下插件编写的基本要求及基础 demo，第二部分介绍一个实际的插件开发过程。对于webpack的插件机制建另一篇博文[webpack插件机制](/webpack-plugin-mechanism)。
 
 <!-- more -->
 
@@ -81,36 +81,6 @@ class MyExampleWebpackPlugin {
 
 ## 实战一个压缩资源为 zip 的插件
 
-### 环境搭建
-
-一个基础的 webpack 环境即可，目录示例如下：
-![目录结构](01.jpg)
-
-```js
-// package.json
-{
-  "name": "my-plugin",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "webpack": "^4.40.2",
-    "webpack-cli": "^3.3.9"
-  },
-  "dependencies": {
-    "jszip": "^3.2.2",
-    "webpack-sources": "^1.4.3"
-  }
-}
-```
-
 ### 知识准备
 
 #### 通过 Compilation 进行文件写入
@@ -146,6 +116,36 @@ zip.generateAsync({ type: 'blob' }).then(function(content) {
   // see FileSaver.js
   saveAs(content, 'example.zip');
 });
+```
+
+### 环境搭建
+
+一个基础的 webpack 环境即可，目录示例如下：
+![目录结构](01.jpg)
+
+```js
+// package.json
+{
+  "name": "my-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9"
+  },
+  "dependencies": {
+    "jszip": "^3.2.2",
+    "webpack-sources": "^1.4.3"
+  }
+}
 ```
 
 ### 具体编写
