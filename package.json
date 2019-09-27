@@ -28,5 +28,13 @@
     "hexo-server": "^0.2.0",
     "hexo-wordcount": "^3.0.2",
     "striptags": "^3.1.1"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
