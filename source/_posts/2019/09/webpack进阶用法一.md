@@ -283,15 +283,15 @@ module.exports = {
 
 - source map: 产生.map 文件
 - eval: 使用 eval 包裹模块代码
-- cheap: 不包含列列信息
-- inline: 将.map 作为 DataURI 嵌入，不不单独生成.map 文件
-- module:包含 loader 的 sourcemap
+- cheap: 不包含列信息
+- inline: 将.map 作为 DataURI 嵌入，不单独生成.map 文件
+- module: 包含 loader 的 sourcemap
 
 ## 提取页面公共资源
 
 ### 基础库分离
 
-将 react、react-dom 基础包通过 cdn 引入，不打入 bundle 中，可以使用`html-webpackexternals-plugin`实现：
+将 react、react-dom 基础包通过 cdn 引入，不打入 bundle 中，可以使用`html-webpack-externals-plugin`实现：
 
 ```js
 // webpack.config.js
@@ -375,13 +375,23 @@ module.exports = {
 
 ### 概念
 
-1 个模块可能有多个方法，只要其中的某个方法使用到了，则整个文件都会被打到
-bundle 里面去，tree shaking 就是只把用到的方法打入 bundle，没用到的方法会在
-uglify 阶段被擦除掉。
+一个模块可能有多个方法，只要其中的某个方法使用到了，则整个文件都会被打到 bundle 里面去，tree shaking 就是只把用到的方法打入 bundle，没用到的方法会在 uglify 阶段被擦除掉。
 
 ### 使用
 
-webpack4.x 在 mode 设置为 production 时默认开启，webpack3.x 与 webpack2.x 在.babelrc 里设置 modules: false 即可。
+webpack4.x 在 `mode` 设置为 `production` 时默认开启，webpack3.x 与 webpack2.x 在.babelrc 里设置 `modules: false` 即可：
+
+```js
+{
+  "presets": [
+    ["env", {
+      "modules": false  //关键点，设置babel不用对ES6的import编译成require形式
+    }],
+    "stage-2",
+    "react"
+  ]
+}
+```
 
 ### DCE (Dead code elimination)
 
@@ -389,18 +399,19 @@ webpack4.x 在 mode 设置为 production 时默认开启，webpack3.x 与 webpac
 
 - 代码执行的结果不会被用到
 - 代码不会被执行，不可到达
-- 代码只会影响死变量（只写不不读）
-  tree shaking 是 DCE 的一种方式，它可以在打包时忽略没有用到的代码。
+- 代码只会影响死变量（只写不读）
+
+tree shaking 是 DCE 的一种方式，它可以在打包时忽略没有用到的代码。
 
 ```js
 if (false) {
-console.log('这段代码永远不会执行’);
+  console.log('这段代码永远不会执行’);
 }
 ```
 
 ### 原理
 
-利用 ES6 模块的特点（只能作为模块顶层的语句句出现、import 的模块名只能是字符串串常量和引入的模块不可改变），在打包阶段对静态代码进行 AST 语法分析，对有用和无用的模块打上不同标签，“uglify”阶段删除无用代码。
+利用 ES6 模块的特点（只能作为模块顶层的语句出现、import 的模块名只能是字符串常量和引入的模块不可改变），在打包阶段对静态代码进行语法分析，对有用和无用的模块打上不同标签，“uglify”阶段删除无用代码。
 
 ### 局限性
 
@@ -424,6 +435,10 @@ if (condition) {
 
 3，只能处理 JS 相关冗余代码，不能处理 CSS 冗余代码。
 
+[更多介绍](https://www.jianshu.com/p/7994b1fc6dfe)
+
 # 参考
+
+https://www.jianshu.com/p/7994b1fc6dfe
 
 《极客时间》
