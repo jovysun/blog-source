@@ -2,7 +2,7 @@
 title: 本地库上传到github
 tags:
   - git
-  - 工具
+  - 备忘
 categories:
   - 其他
 date: 2018-07-25 14:07:40

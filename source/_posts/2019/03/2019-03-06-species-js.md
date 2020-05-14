@@ -2,8 +2,6 @@
 title: species-in-pieces网站动效的JS实现
 tags:
   - 动效
-  - svg
-  - JavaScript
 categories:
   - 前端
 date: 2019-03-06 10:48:36

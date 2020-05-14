@@ -2,10 +2,9 @@
 title: （入门）keystonejs入门教程之环境搭建
 date: 2018-04-09 17:30:15
 tags:
-  - keystonejs
-  - cms
+  - Node.js
 categories:
-  - 后端
+  - 其他
 ---
 ## 基础环境 ##
 Node.js 0.10+ 和MongoDB v2.4+；

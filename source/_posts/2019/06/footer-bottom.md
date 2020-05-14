@@ -4,7 +4,7 @@ permalink: footer-bottom
 tags:
   - CSS
 categories:
-  - 其他
+  - 前端
 date: 2019-06-28 15:57:22
 updated: 2019-06-28 15:57:22
 ---

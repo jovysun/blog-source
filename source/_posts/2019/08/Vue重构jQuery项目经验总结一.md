@@ -3,7 +3,6 @@ title: Vue重构jQuery项目经验总结一
 permalink: Vue-restructure-jQuery-1
 tags:
   - Vue
-  - jQuery
 categories:
   - 框架与库
   - Vue

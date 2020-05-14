@@ -1,9 +1,9 @@
 ---
 title: html邮件模板测试及nodemailer的入门
 tags:
-  - node
+  - Node.js
 categories:
-  - 前端
+  - 其他
 date: 2018-07-25 09:35:34
 updated: 2018-07-25 09:35:34
 ---

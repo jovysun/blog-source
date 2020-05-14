@@ -1,9 +1,6 @@
 ---
 title: web前端知识图谱2019
 tags:
-  - HTML
-  - CSS
-  - JavaScript
   - 备忘
 categories:
   - 前端

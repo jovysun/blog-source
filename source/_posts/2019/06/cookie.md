@@ -2,9 +2,9 @@
 title: Cookie一箩筐
 permalink: cookie
 tags:
-  - cookie
-categories:
   - 基础
+categories:
+  - 其他
 date: 2019-06-21 13:22:34
 updated: 2019-06-21 13:22:34
 ---

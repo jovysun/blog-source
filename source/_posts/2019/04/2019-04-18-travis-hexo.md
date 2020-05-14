@@ -1,9 +1,8 @@
 ---
 title: Travis CI实现hexo博客自动部署
 tags:
-  - github
-  - hexo
-  - 工具
+  - CI/CD
+  - 实战
 categories:
   - 其他
 date: 2019-04-18 17:55:02

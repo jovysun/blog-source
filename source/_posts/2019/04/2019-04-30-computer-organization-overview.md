@@ -1,9 +1,8 @@
 ---
 title: 计算机组成原理——总览
 tags:
-  - 计算机
-categories:
   - 基础
+categories:
   - 计算机组成原理
 date: 2019-04-30 14:17:54
 updated: 2019-04-30 14:17:54

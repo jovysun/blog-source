@@ -4,7 +4,7 @@ permalink: js-copy
 tags:
   - JavaScript
 categories:
-  - 其他
+  - 前端
 date: 2019-06-28 14:15:47
 updated: 2019-06-28 14:15:47
 ---

@@ -2,10 +2,9 @@
 title: keystonejs实战之页头页脚
 date: 2018-04-09 17:37:06
 tags:
-  - keystonejs
-  - cms
+  - Node.js
 categories:
-  - 后端
+  - 其他
 ---
 前两篇介绍了入门相关知识及对keystonejs整体可用性评估，这篇介绍下开始实际运用中的页头页脚部分，因为马上项目忙了，这个先匆匆的作个收尾。
 

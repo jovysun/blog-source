@@ -1,14 +1,24 @@
 ---
 title: macOS-cmd
+permalink: macOS-cmd
 tags:
-  - html
-  - css
-  - javascript
+  - HTML
+  - CSS
+  - JavaScript
 categories:
-  - 前端
+  - 其他
 date: 2019-04-18 16:24:45
 updated: 2019-04-18 16:24:45
 ---
+
+# 概述
+
+<!-- more -->
+
+# 详述
+
+# 参考
+
 
 # 概述
 

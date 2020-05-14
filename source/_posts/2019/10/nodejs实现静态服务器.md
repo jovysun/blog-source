@@ -4,7 +4,7 @@ permalink: nodejs-static-server
 tags:
   - Node.js
 categories:
-  - 后端
+  - 其他
 date: 2019-10-25 08:46:59
 updated: 2019-10-25 08:46:59
 ---

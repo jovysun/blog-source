@@ -4,7 +4,7 @@ permalink: 前端路由原理基础
 tags:
   - JavaScript
 categories:
-  - 其他
+  - 前端
 date: 2019-05-22 15:17:09
 updated: 2019-05-22 15:17:09
 keywords:

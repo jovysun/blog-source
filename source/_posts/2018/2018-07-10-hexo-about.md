@@ -1,7 +1,6 @@
 ---
 title: hexo相关知识整理
 tags:
-  - hexo
   - 备忘
 categories:
   - 其他

@@ -1,8 +1,10 @@
 ---
 title: GraphicsMagick for node.js环境搭建
 date: 2017-07-12 16:52:41
-tags: [gm]
-categories: [其他]
+tags:
+  - 实战
+categories:
+  - 其他
 ---
 
 

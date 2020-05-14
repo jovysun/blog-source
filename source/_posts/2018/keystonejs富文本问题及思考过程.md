@@ -2,10 +2,9 @@
 title: keystonejs富文本问题及思考过程
 date: 2018-04-09 17:31:26
 tags:
-  - keystonejs
-  - cms
+  - Node.js
 categories:
-  - 后端
+  - 其他
 ---
 上一篇讲了keystonejs的环境搭建，helloworld跑起来之后，实际运用中会发现各种问题，今天就说下富文本编辑器的问题（针对后端不熟的同学）。
 
