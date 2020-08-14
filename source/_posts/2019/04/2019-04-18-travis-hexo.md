@@ -9,7 +9,10 @@ date: 2019-04-18 17:55:02
 updated: 2019-04-18 17:55:02
 ---
 # 前言
+
+更新2020.05.14：超简单的[官方教程](https://docs.travis-ci.com/user/tutorial/#to-get-started-with-travis-ci-using-github)。
 更新：发现另一种更方便的[实现方法](https://juejin.im/post/5c415a25f265da61285a6010)。
+
 
 此篇默认读者已经使用过hexo写过几篇博文，并且已经创建好SSH key。
 
