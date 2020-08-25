@@ -1,6 +1,6 @@
 ---
 title: nodejs实现本地虚拟主机
-permalink: nodejs实现本地虚拟主机
+permalink: nodejs-local-virtual-host
 tags:
   - nodejs
   - JavaScript
